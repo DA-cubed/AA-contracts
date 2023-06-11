@@ -49,21 +49,38 @@ const config: HardhatUserConfig = {
     }
   },
   networks: {
-    dev: { url: 'http://localhost:8545' },
+    dev: {
+      url: 'http://localhost:8545',
+      accounts: ['897368deaa9f3797c02570ef7d3fa4df179b0fc7ad8d8fc2547d04701604eb72']
+    },
     // github action starts localgeth service, for gas calculations
     localgeth: { url: 'http://localgeth:8545' },
-    goerli: getNetwork('goerli'),
+    goerli: {
+      url: 'https://goerli.infura.io/v3/98ca88c0245b473e8ae0274702536b17',
+      accounts: ['e4aefe65eccaba065942581b83df0574e1f76951a5763bfb09011db17479525a']
+    },
     sepolia: getNetwork('sepolia'),
     proxy: getNetwork1('http://localhost:8545')
   },
   mocha: {
     timeout: 10000
   },
-
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY
+    apiKey: {
+      mainnet: process.env.ETHERSCAN_KEY,
+      dev: 'abc'
+    },
+    customChains: [
+      {
+        network: 'dev',
+        chainId: 31337,
+        urls: {
+          apiURL: 'http://0.0.0.0:4000/api',
+          browserURL: 'http://0.0.0.0:4000'
+        }
+      }
+    ]
   }
-
 }
 
 // coverage chokes on the "compilers" settings
@@ -73,3 +90,4 @@ if (process.env.COVERAGE != null) {
 }
 
 export default config
+
