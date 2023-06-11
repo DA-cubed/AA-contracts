@@ -1,11 +1,13 @@
-Implementation of contracts for [ERC-4337](https://eips.ethereum.org/EIPS/eip-4337) account abstraction via alternative mempool.
+# DA(cubed) custom contracts and scripts
 
-# Resources
+Participation in the DAO is represented by (voting) token, therefore the paymaster which pays for participant's
+transactions checks the balance of this user and depending on the value validates UserOperation or no.
 
-[Vitalik's post on account abstraction without Ethereum protocol changes](https://medium.com/infinitism/erc-4337-account-abstraction-without-ethereum-protocol-changes-d75c9d94dc4a)
+Contract: `contracts/samples/Paymaster.sol`
 
-[Discord server](http://discord.gg/fbDyENb6Y9)
+The rest in this repository are debugging, deploying and setting up scripts in `scripts/`.
 
-[Bundler reference implementation](https://github.com/eth-infinitism/bundler)
 
-[Bundler specification test suite](https://github.com/eth-infinitism/bundler-spec-tests)
+This repo was originally forked from eth-infinitism.
+
+
