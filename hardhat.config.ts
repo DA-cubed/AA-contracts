@@ -66,10 +66,7 @@ const config: HardhatUserConfig = {
     timeout: 10000
   },
   etherscan: {
-    apiKey: {
-      mainnet: process.env.ETHERSCAN_KEY,
-      dev: 'abc'
-    },
+    apiKey: '88G1G45ZUAD7RPYHSISI633NJXV5QUASDF',
     customChains: [
       {
         network: 'dev',

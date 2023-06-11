@@ -7,17 +7,17 @@ async function main (): Promise<void> {
   // We get the contract to deploy
   //
 
-  const paymasterAddress = '0x78Fd39Fd13dc35a22D72499B5B560B1AbCE62c7b'
+  const paymasterAddress = '0x3CDB69AB4AAfBa23fd4ECB30e5Af545Ec24C8304'
   const paymaster = await ethers.getContractAt("DAAAPaymaster", paymasterAddress)
   // const paymaster = await paymf.deploy(token.address, entrypoint)
   // await paymaster.deployed()
   // await paymaster.connect(signer).functions.addStake(1, {value: parseEther('0.1') })
   // console.log('Paymaster deployed to:', paymaster.address)
-  // await paymaster.functions.addStake(1,{ value: parseEther('0.1') })
+  await paymaster.functions.addStake(1,{ value: parseEther('0.1') })
 
   // await token.mint(signer.address, 200)
 
-  await paymaster.deposit({ value: parseEther('1') })
+  // await paymaster.deposit({ value: parseEther('1') })
 
   console.log('added stake')
 }

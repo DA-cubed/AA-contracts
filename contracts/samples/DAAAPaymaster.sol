@@ -15,7 +15,7 @@ contract DAAAPaymaster is BasePaymaster {
 
     constructor(address tokenAddress, IEntryPoint _entryPoint) BasePaymaster(_entryPoint) {
         token = ERC20(tokenAddress);
-        threshold = 0;
+        threshold = 1;
     }
 
     /**
@@ -29,12 +29,20 @@ contract DAAAPaymaster is BasePaymaster {
 
         if (userOp.initCode.length != 0) {
             // _validateConstructor(userOp);
-            require(token.balanceOf(userOp.sender) >= threshold, "TokenPaymaster: no balance (pre-create)");
+            if (token.balanceOf(userOp.sender) >= threshold) {
+                return (abi.encode(userOp.sender), 0);
+                // revert("TokenPaymaster: no balance (pre-create)");
+            }
+            return(abi.encode(userOp.sender),1);
         } else {
-            require(token.balanceOf(userOp.sender) >= threshold, "TokenPaymaster: no balance");
+            if (token.balanceOf(userOp.sender) >= threshold) {
+                return(abi.encode(userOp.sender),0);
+                // return(abi.encode(userOp.sender),1);
+            }
+            return(abi.encode(userOp.sender),1);
+            // require(token.balanceOf(userOp.sender) >= threshold, "TokenPaymaster: no balance");
         }
-
-        return (abi.encode(userOp.sender), 0);
+        // return (abi.encode(userOp.sender), 0);
     }
 
     // // when constructing an account, validate constructor code and parameters
