@@ -14,4 +14,6 @@ Counter - https://goerli.etherscan.io/address/0x2Ba7226e7647262E15e36771FC9129d2
 
 Link to UserOperation explorer - https://app.jiffyscan.xyz/userOpHash/0x1c4c8e2a2b5b446a1b0413b0381aab0a9449095326b9f83cd26387fa223dd907?network=goerli
 
+Link to molochDAO - https://admin.daohaus.fun/#/molochv3/0x5/0xb79999fc14c4fbf3961dfe1d1d4dd407e577424e/settings
+
 This repo was originally forked from eth-infinitism.
